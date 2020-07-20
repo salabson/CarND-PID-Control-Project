@@ -21,12 +21,21 @@ void PID::UpdateError(double cte) {
   /**
    * TODO: Update PID errors based on cte.
    */
-
+    double cte_sum = 0.0;
+    // Calculate propositional error
+    p_error = kp*cte;
+    // Calculate Intregral error
+    cte_sum+=cte;
+    i_error = ki*cte_sum;
+    // Calculate derivative error
+    double prev_cte = cte;
+    diff_cte = cte-prev_cte;
+    d_error = kd*diff_cte;
 }
 
 double PID::TotalError() {
   /**
    * TODO: Calculate and return the total error
    */
-  return 0.0;  // TODO: Add your total error calc here!
+  return p_error+ i_error+ d_error;  // TODO: Add your total error calc here!
 }
