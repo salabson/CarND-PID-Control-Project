@@ -12,7 +12,9 @@ void PID::Init(double Kp_, double Ki_, double Kd_) {
   /**
    * TODO: Initialize PID coefficients (and errors, if needed)
    */
-
+    kp = kp_;
+    ki = ki_;
+    kd = kd_;
 }
 
 void PID::UpdateError(double cte) {
