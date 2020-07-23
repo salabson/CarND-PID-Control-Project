@@ -1,6 +1,7 @@
 #ifndef PID_H
 #define PID_H
-
+#include <iostream> 
+#include <vector>
 class PID {
  public:
   /**
@@ -12,6 +13,8 @@ class PID {
    * Destructor.
    */
   virtual ~PID();
+
+  
 
   /**
    * Initialize PID.
@@ -32,6 +35,8 @@ class PID {
   double TotalError();
 
  private:
+  
+
   /**
    * PID Errors
    */
@@ -45,6 +50,16 @@ class PID {
   double Kp;
   double Ki;
   double Kd;
+
+   /**
+   * Twiddle values
+   */
+   vector<double> p;
+   vector<double> dp
+ 
+   // iteration counter
+   int iter;
+
 };
 
 #endif  // PID_H
