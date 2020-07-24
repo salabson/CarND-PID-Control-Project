@@ -1,6 +1,5 @@
 #ifndef PID_H
 #define PID_H
-#include <iostream> 
 #include <vector>
 class PID {
  public:
@@ -14,7 +13,31 @@ class PID {
    */
   virtual ~PID();
 
+  // data
+  //private:
+   /**
+   * Twiddle values
+   */
+   std::vector<double> p;
+   std::vector<double> dp;
+
+  /**
+   * PID Errors
+   */
+  double p_error;
+  double i_error;
+  double d_error;
   
+  /**
+   * PID Coefficients
+   */ 
+  double Kp;
+  double Ki;
+  double Kd;
+  
+   // iteration counter
+   int iter;
+
 
   /**
    * Initialize PID.
@@ -28,38 +51,23 @@ class PID {
    */
   void UpdateError(double cte);
 
-  /**
+
+ 
+
+ /**
    * Calculate the total PID error.
    * @output The total PID error
    */
   double TotalError();
+  double TotalError(double p_gain, double i_gain, double d_gain);
+ 
 
- private:
-  
-
-  /**
-   * PID Errors
-   */
-  double p_error;
-  double i_error;
-  double d_error;
-
-  /**
-   * PID Coefficients
-   */ 
-  double Kp;
-  double Ki;
-  double Kd;
 
    /**
-   * Twiddle values
+   * optimize the PID gains or coefficients.
+   * @param tol The tolearance
    */
-   vector<double> p;
-   vector<double> dp
- 
-   // iteration counter
-   int iter;
-
+   void Twidlle(double tol);
 };
 
 #endif  // PID_H
