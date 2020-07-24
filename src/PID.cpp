@@ -19,6 +19,15 @@ void PID::Init(double Kp_, double Ki_, double Kd_) {
     p_error=0.0;
     i_error=0.0;
     d_error=0.0;
+ 
+    // Resize twiddle 
+    p.resize(3);
+    dp.resize(3);
+    
+    // Initialize twiddle dp values
+    dp[0] = 1.0;
+    dp[1] = 1.0;
+    dp[2] = 1.0;
 
     iter+=1;
     }
