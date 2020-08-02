@@ -67,7 +67,7 @@ class PID {
    * optimize the PID gains or coefficients.
    * @param tol The tolearance
    */
-   void Twidlle(double tol);
+   void Twiddle(double tol);
 };
 
 #endif  // PID_H

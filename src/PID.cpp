@@ -61,7 +61,7 @@ double PID::TotalError(double p_gain, double i_gain, double d_gain){
    return -p_gain*p_error -i_gain*i_error+ -d_gain*d_error; 
 }
 
-void PID::Twidlle(double tol){
+void PID::Twiddle(double tol){
    double best_err= Kp;
    double err;
 
@@ -85,7 +85,8 @@ void PID::Twidlle(double tol){
            best_err = err;
            dp[i]*=1.1;
            }else{
-            dp[i]*=0.95;
+            p[i]+=dp[i];
+            dp[i]*=0.9;
            }
 
       }
